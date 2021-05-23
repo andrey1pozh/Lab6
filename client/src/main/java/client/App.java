@@ -17,23 +17,23 @@ public class App {
     private static final int RECONNECTION_TIMEOUT = 5 * 1000;
     private static final int MAX_RECONNECTION_ATTEMPTS = 5;
 
-    private static String host; //127.0.0.1
-    private static int port; //2232
+    private static String host = "127.0.0.1";
+    private static int port = 3523;
 
-    private static boolean initializeConnectionAddress(String[] hostAndPortArgs) {
+    private static boolean initializeConnectionAddress(String host_1, int port_1) {
         try {
-            if (hostAndPortArgs.length != 2) throw new WrongAmountOfElementsException();
-            host = hostAndPortArgs[0];
-            port = Integer.parseInt(hostAndPortArgs[1]);
+            //\\if (/*(host_1.length() = 0) | */(port_1 = 0)) throw new WrongAmountOfElementsException();
+            host = host_1;
+            port = port_1;
             if (port < 0) throw new NotInDeclaredLimitsException();
             return true;
-        } catch (WrongAmountOfElementsException exception) {
+        /*} catch (WrongAmountOfElementsException exception) {
             String jarName = new java.io.File(App.class.getProtectionDomain()
                     .getCodeSource()
                     .getLocation()
                     .getPath())
                     .getName();
-            Outputer.println("Использование: 'java -jar " + jarName + " <host> <port>'");
+            Outputer.println("Использование: 'java -jar " + jarName + " <host> <port>'");*/
         } catch (NumberFormatException exception) {
             Outputer.printerror("Порт должен быть представлен числом!");
         } catch (NotInDeclaredLimitsException exception) {
@@ -43,7 +43,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        if (!initializeConnectionAddress(args)) return;
+        if (!initializeConnectionAddress(host, port)) return;
         Scanner userScanner = new Scanner(System.in);
         UserHandler userHandler = new UserHandler(userScanner);
         Client client = new Client(host, port, RECONNECTION_TIMEOUT, MAX_RECONNECTION_ATTEMPTS, userHandler);
