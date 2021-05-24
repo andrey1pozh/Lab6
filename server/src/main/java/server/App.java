@@ -12,9 +12,9 @@ import server.utility.RequestHandler;
  * Main server class. Creates all server instances.
  */
 public class App {
-    public static final int PORT = 1821;
+    public static final int PORT = 3523;
     public static final int CONNECTION_TIMEOUT = 60 * 1000;
-    public static final String ENV_VARIABLE = "C:\\Users\\andre\\IdeaProjects\\Lab6_1\\marinesCollection.json";
+    public static final String ENV_VARIABLE = "C:\\Users\\andre\\IdeaProjects\\Lab6_2\\marinesCollection.json";
     //public static Logger logger = LogManager.getLogger("ServerLogger");
 
     public static void main(String[] args) {
