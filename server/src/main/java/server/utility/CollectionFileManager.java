@@ -57,20 +57,20 @@ public class CollectionFileManager {
                 }.getType();
                 collection = gson.fromJson(collectionFileScanner.nextLine().trim(), collectionType);
                 Outputer.println("Коллекция успешно загружена.");
-                //App.logger.info("Коллекция успешно загружена.");
+                App.logger.info("Коллекция успешно загружена.");
                 return collection;
             } catch (FileNotFoundException exception) {
                 Outputer.printerror("Загрузочный файл не найден!");
-                //App.logger.warn("Загрузочный файл не найден!");
+                App.logger.warn("Загрузочный файл не найден!");
             } catch (NoSuchElementException exception) {
                 Outputer.printerror("Загрузочный файл пуст!");
-                //App.logger.error("Загрузочный файл пуст!");
+                App.logger.error("Загрузочный файл пуст!");
             } catch (JsonParseException | NullPointerException exception) {
                 Outputer.printerror("В загрузочном файле не обнаружена корректная коллекция!");
-                //App.logger.error("В загрузочном файле не обнаружена корректная коллекция!");
+                App.logger.error("В загрузочном файле не обнаружена корректная коллекция!");
             } catch (IllegalStateException exception) {
                 Outputer.printerror("Непредвиденная ошибка!");
-                //App.logger.fatal("Непредвиденная ошибка!");
+                App.logger.fatal("Непредвиденная ошибка!");
                 System.exit(0);
             }
         } else Outputer.printerror("Системная переменная с загрузочным файлом не найдена!");
