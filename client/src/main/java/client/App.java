@@ -20,11 +20,11 @@ public class App {
     private static String host = "127.0.0.1";
     private static int port = 3523;
 
-    private static boolean initializeConnectionAddress(String[] hostAndPortArgs) {
+    private static boolean initializeConnectionAddress(/*String[] hostAndPortArgs*/) {
         try {
-            if (hostAndPortArgs.length != 2) throw new WrongAmountOfElementsException();
-            host = hostAndPortArgs[0];
-            port = Integer.parseInt(hostAndPortArgs[1]);
+            if (host == null) throw new WrongAmountOfElementsException();
+            //host = hostAndPortArgs[0];
+            //port = Integer.parseInt(hostAndPortArgs[1]);
             if (port < 0) throw new NotInDeclaredLimitsException();
             return true;
         } catch (WrongAmountOfElementsException exception) {
@@ -43,7 +43,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        if (!initializeConnectionAddress(args)) return;
+        if (!initializeConnectionAddress(/*args*/)) return;
         Scanner userScanner = new Scanner(System.in);
         UserHandler userHandler = new UserHandler(userScanner);
         Client client = new Client(host, port, RECONNECTION_TIMEOUT, MAX_RECONNECTION_ATTEMPTS, userHandler);
