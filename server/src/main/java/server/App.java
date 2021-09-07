@@ -1,5 +1,6 @@
 package server;
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import server.commands.*;
@@ -18,6 +19,7 @@ public class App {
     public static Logger logger = LogManager.getLogger("ServerLogger");
 
     public static void main(String[] args) {
+        BasicConfigurator.configure();
         CollectionFileManager collectionFileManager = new CollectionFileManager(ENV_VARIABLE);
         CollectionManager collectionManager = new CollectionManager(collectionFileManager);
         CommandManager commandManager = new CommandManager(
